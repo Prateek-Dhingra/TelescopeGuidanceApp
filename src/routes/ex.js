@@ -84,8 +84,10 @@ exRouter.get("/getData", async(req, res)=> {
 exRouter.post("/setData", async(req, res) => {
     const token = req?.headers?.authorization;
 
-    if (!token) res.json({message: "No token"});
-    console.log("No token provided");
+    if (!token) {
+        console.log("No token provided");
+        return res.json({message: "No token"});;
+    }
     // console.log(req?.headers?.authorization);
     // const id = req?.body?.id;
     // console.log(req?.body, token);
