@@ -83,6 +83,9 @@ exRouter.get("/getData", async(req, res)=> {
 // This request will require user to prove logged-in by giving jwt token
 exRouter.post("/setData", async(req, res) => {
     const token = req?.headers?.authorization;
+
+    if (!token) res.json({message: "No token"});
+    console.log("No token provided");
     // console.log(req?.headers?.authorization);
     // const id = req?.body?.id;
     // console.log(req?.body, token);
@@ -110,6 +113,7 @@ exRouter.post("/setData", async(req, res) => {
         }
     } catch(err) {
         console.error(err);
+        res.json({message: err});
     }
 })
 
